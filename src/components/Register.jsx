@@ -1,10 +1,19 @@
 import { useState } from 'react';
 import './Register.scss';
+import { useNavigate } from 'react-router-dom';
 
 function Register() {
+    const navigate = useNavigate();
     const [menu, setMenu] = useState('login');
     const [errMes, setErrMes] = useState('');
     const [sucMes, setSucMes] = useState('');
+    
+    const EnterForm = (e) => {
+        e.preventDefault()  
+        navigate('/main')
+    }
+
+
   return (
     <div className="register">
         <div className="form">
@@ -16,19 +25,19 @@ function Register() {
                     <div className="error_mes">{errMes}</div>
                 }
                 {menu == 'signin' && 
-                    <form action="#">
+                    <form onClick={EnterForm}>
                         <h1 className="title">Hisobga kirish !</h1>
                         <label>
                             <span>username:</span>
                             <div className="input">
-                                <input type="text" placeholder='usernamemingizni kiriting...' required/>
+                                <input type="text" placeholder='usernamemingizni kiriting...' required />
                                 <i className="fa-solid fa-circle-user"></i>
                             </div>
                         </label>
                         <label>
                             <span>Parol:</span>
                             <div className="input">
-                                <input type="password" placeholder='Parolingizni kiriting...' required/>
+                                <input type="password" placeholder='Parolingizni kiriting...' required />
                                 <i className="fa-solid fa-lock"></i>
                             </div>
                         </label>

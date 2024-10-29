@@ -18,6 +18,9 @@ body {
   --bg-c: #ccc;
   --input-bg: #EEEEEE;
   --focus-c: #269EF8;
+  --focus-c-g: #2284ce;
+  --bg-menu: #222D32;
+  --active-y-c: rgb(241, 214, 12);
 }
 
 .container{
@@ -40,6 +43,11 @@ body {
 
 .succes_mes{
   background-color: green !important;
+}
+
+
+::-webkit-scrollbar{
+  width: 0;
 }
 
 

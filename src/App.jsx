@@ -1,6 +1,6 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import RootLayout from "./layouts/RootLayout"
-import { Main, Register } from "./components"
+import { Main, Register, Home, Profil } from "./components"
 
 function App() {
   const routes = createBrowserRouter([
@@ -11,6 +11,20 @@ function App() {
         {
           index: true,
           element: <Register />
+        }
+      ]
+    },
+    {
+      path: 'main/',
+      element: <Main />,
+      children: [
+        {
+          index: true,
+          element: <Home />
+        },
+        {
+          path: 'profil',
+          element: <Profil />
         }
       ]
     }
