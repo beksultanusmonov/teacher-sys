@@ -1,6 +1,6 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import RootLayout from "./layouts/RootLayout"
-import { Main, Register, Home, Profil } from "./components"
+import { Main, Register, Home, Profil, User } from "./components"
 
 function App() {
   const routes = createBrowserRouter([
@@ -25,6 +25,10 @@ function App() {
         {
           path: 'profil',
           element: <Profil />
+        },
+        {
+          path: 'user/:id',
+          element: <User />
         }
       ]
     }

@@ -1,10 +1,30 @@
-import { useState } from 'react';
 import './Main.scss';
-import { Link, Outlet } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, Outlet, useNavigate, useParams } from 'react-router-dom';
 
 function Main() {
   const [hide, setHide] = useState(false)
+  const navigate = useNavigate();
+  const user = +localStorage.getItem('user');
+  const [userData, setUserData] = useState({});
+  const numRegEx = /^[0-9]$/;
+  
+  const getData = () => {
+    if(user == 0){
+      navigate('/')
+    } else{
+      const alluser = JSON.parse(localStorage.getItem('alluser'));
+      alluser.forEach(data => {
+        if(data.id == user){
+          setUserData(data);
+        }
+      })  
+    }
+  }
 
+  useEffect(() => {
+    getData();
+  }, [])
 
   return (
     <main className="main">
@@ -25,6 +45,10 @@ function Main() {
               <span>Profil</span>
             </Link>
           </nav>
+          <Link className={hide ? "back_m hide" : "back_m"} to="/">
+              <i className="fa-solid fa-right-to-bracket"></i>
+              <span>Chiqish</span>
+          </Link>
         </div>
         <div className={hide ? "menu active" : "menu"}>
           <div className="bars" onClick={() => hide ? setHide(false) : setHide(true)}>
@@ -34,7 +58,7 @@ function Main() {
           </div>
           <Link to="/main/profil" className="profil">
             <i className='fa-solid fa-circle-user'></i>
-            <span>Usmonov B.</span>
+            <span>{`${userData.lastname} ${userData.name}`}</span>
           </Link>
         </div>
       </header>

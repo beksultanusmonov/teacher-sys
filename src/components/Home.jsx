@@ -1,73 +1,62 @@
+import { useEffect, useState } from 'react';
 import './Home.scss';
+import { Link } from 'react-router-dom';
 
 function Home() {
+
+    const user = +localStorage.getItem('user')
+    const [AllUsers, setAllUsers] = useState([])
+    const [userData, setUserData] = useState({})
+
+    const getData = () => {
+        if(user == 0){
+            navigate('/')
+        } else{
+            const alluser = JSON.parse(localStorage.getItem('alluser'));
+            setAllUsers(alluser)
+            alluser.forEach(data => {
+            if(data.id == user){
+                setUserData(data);
+            }
+            })
+        }
+    }
+
+    useEffect(() => {
+        getData();
+    }, [])
+
   return (
     <section className="home">
         <div className="users">
-            <div className="user">
-                <div className="image">
-                    <img src="../persons/teenboy.jpg" alt="" />
-                </div>
-                <div className="informs">
-                    <h1>Beksulton Usmonov</h1>
-                    <p>Informatika va Inovatsiyalar vazirligi mukofoti sovrindori</p>
-                    <div className="rating">
-                        <i className="fa-solid fa-star yes"></i>
-                        <i className="fa-solid fa-star yes"></i>
-                        <i className="fa-solid fa-star yes"></i>
-                        <i className="fa-solid fa-star yes"></i>
-                        <i className="fa-solid fa-star yes"></i>
+            {AllUsers != [] &&
+                AllUsers.map(item => {
+                    return <div className="user" key={item.id}>
+                        {item.img == '' ?
+                            <div className="image">
+                                <img src="../persons/user.jpg" alt="" />
+                            </div>
+                            :
+                            <div className="image">
+                                <img src={item.img} alt="" />
+                            </div>
+                        }
+                        <div className="informs">
+                            <h1>{`${item.name} ${item.lastname}`}</h1>
+                            <p>{item.bio}</p>
+                            <div className="rating">
+                                <i>rating: {item.rating}</i>
+                                {/* <i className="fa-solid fa-star yes"></i>
+                                <i className="fa-solid fa-star yes"></i>
+                                <i className="fa-solid fa-star yes"></i>
+                                <i className="fa-solid fa-star yes"></i>
+                                <i className="fa-solid fa-star yes"></i> */}
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div className="user">
-                <div className="image">
-                    <img src="https://www.shutterstock.com/image-photo/young-teacher-near-chalkboard-school-260nw-164697251.jpg" alt="" />
-                </div>
-                <div className="informs">
-                    <h1>Muhtarov Mahmudjon</h1>
-                    <p>Andijon Mashinasozlik instetuti Dekani </p>
-                    <div className="rating">
-                        <i className="fa-solid fa-star yes"></i>
-                        <i className="fa-solid fa-star yes"></i>
-                        <i className="fa-solid fa-star yes"></i>
-                        <i className="fa-solid fa-star yes"></i>
-                        <i className="fa-solid fa-star yes"></i>
-                    </div>
-                </div>
-            </div>
-            <div className="user">
-                <div className="image">
-                    <img src="https://media.licdn.com/dms/image/v2/D4E03AQG3kNcdsSC2sQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1725689906651?e=2147483647&v=beta&t=TyP-OfZlLS33zUU2Npc2EJvV7zjdF-HvTTCqmWU3N24" alt="" />
-                </div>
-                <div className="informs">
-                    <h1>Alijonov Ismoyil</h1>
-                    <p>Andijon Mashinasozlik instetuti ATT yo'nalishi guruhlari tyutori </p>
-                    <div className="rating">
-                        <i className="fa-solid fa-star yes"></i>
-                        <i className="fa-solid fa-star yes"></i>
-                        <i className="fa-solid fa-star yes"></i>
-                        <i className="fa-solid fa-star yes"></i>
-                        <i className="fa-solid fa-star"></i>
-                    </div>
-                </div>
-            </div>
-            <div className="user">
-                <div className="image">
-                    <img src="https://www.shutterstock.com/image-photo/woman-drink-coffee-classroom-teacher-260nw-1486028600.jpg" alt="" />
-                </div>
-                <div className="informs">
-                    <h1>Attahanova Saidaxon</h1>
-                    <p>O'quv ishlari bo'yicha dekan o'rin bosari</p>
-                    <div className="rating">
-                        <i className="fa-solid fa-star yes"></i>
-                        <i className="fa-solid fa-star yes"></i>
-                        <i className="fa-solid fa-star yes"></i>
-                        <i className="fa-solid fa-star yes"></i>
-                        <i className="fa-solid fa-star"></i>
-                    </div>
-                </div>
-            </div>
+                })
+            }
+            {/* <Link to={'/main/user/'+145}>
             <div className="user">
                 <div className="image">
                     <img src="https://t3.ftcdn.net/jpg/03/92/77/16/360_F_392771624_dcSMFCBGzM0qvCZZX6foAbsy70Y7llQE.jpg" alt="" />
@@ -84,6 +73,7 @@ function Home() {
                     </div>
                 </div>
             </div>
+            </Link> */}
         </div>
     </section>
   )

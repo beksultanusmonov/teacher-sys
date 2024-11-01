@@ -124,6 +124,38 @@
                     }
                 }
             }
+
+            .back_m{
+                position: absolute;
+                bottom: 20px;
+                width: 100%;
+                left: 0;
+                text-decoration: none;
+                padding: 5px 10px;
+                color: red;
+                display: flex;
+                align-items: center;
+
+                font-size: 22px;
+
+                &.hide{
+                    justify-content: center;
+                    font-size: 25px;
+
+                    i{
+                        margin: 0;
+                    }
+
+                    span{
+                        display: none;
+                    }
+                }
+
+                i{
+                    transform: rotate(180deg);
+                    margin-right: 10px;
+                }
+            }
         }
 
         .menu{
@@ -209,6 +241,20 @@
                     h1{
                         display: block;
                         margin-left: 15px;
+                    }
+                }
+
+                .back_m{
+                    &.hide{
+                        justify-content: flex-start;
+
+                        i{
+                            margin-right: 15px;
+                        }
+
+                        span{
+                            display: block;
+                        }
                     }
                 }
 

@@ -2,6 +2,20 @@ section.profil{
     width: 100%;
     padding: 10px;
 
+    .return_u{
+        margin-bottom: 10px;
+
+        i{
+            cursor: pointer;
+            font-size: 45px;
+            color: var(--black);
+
+            &:hover{
+                opacity: 0.5;
+            }
+        }
+    }
+
     .main_p{
         background-color: var(--white-c);
         padding: 15px 10px;
@@ -34,13 +48,16 @@ section.profil{
                 i{
                     font-size: 22px;
                 }
-
+                 span{
+                    color: red;
+                 }
                 font-size: 25px;
             }
         }
     }
 
     .operation_p{
+        box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
         padding: 10px;
         background-color: var(--white-c);
 
@@ -57,10 +74,90 @@ section.profil{
         }
     }
 
+    .upload_p{
+        margin: 15px 0;
+        padding: 10px;
+        background-color: var(--white-c);
+
+        h1{
+            font-weight: 600;
+            font-size: 30px;
+        }
+
+        form{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+
+            label{
+                padding: 5px 0;
+
+                span{
+                    display: block;
+                    font-size: 18px;
+                }
+
+                input{
+                    height: 45px;
+                    width: 100%;
+                    background-color: var(--input-bg);
+                    color: var(--black);
+                    font-size: 20px;
+                    padding-left: 10px;
+                    border: none;
+                    border-radius: 8px;
+                }
+
+                .input{
+                    position: relative;
+                    height: 45px;
+
+                    span{
+                        width: 100%;
+                        position: absolute;
+                        border: 2px dashed var(--focus-c);
+                        top: 0;
+                        left: 0;
+                        height: 100%;
+                        background-color: var(--input-bg);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: var(--focus-c);
+                        font-size: 25px;
+                        z-index: 1;
+                        border-radius: 8px;
+                    }
+
+                    input{
+                        z-index: 3;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        opacity: 0;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            button{
+                margin-top: 20px;
+                height: 45px;
+                background-color: var(--focus-c);
+                color: var(--white-c);
+                font-size: 25px;
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+            }
+        }
+    }
+
     .posts_p{
         margin-top: 20px;
         padding: 15px 10px;
         background-color: var(--white-c);
+        box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
 
         h1{
             color: var(--black);
@@ -131,6 +228,7 @@ section.profil{
         padding: 10px;
         background-color: var(--white-c);
         margin-top: 15px;
+        box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
 
         h1{
             font-size: 25px;
@@ -171,6 +269,37 @@ section.profil{
                         padding-left: 10px;
                         width: 100%;
                     }
+
+                    .input{
+                        position: relative;
+                        height: 45px;
+    
+                        span{
+                            width: 100%;
+                            position: absolute;
+                            border: 2px dashed var(--focus-c);
+                            top: 0;
+                            left: 0;
+                            height: 100%;
+                            background-color: var(--input-bg);
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            color: var(--focus-c);
+                            font-size: 25px;
+                            z-index: 1;
+                            border-radius: 8px;
+                        }
+    
+                        input{
+                            z-index: 3;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            opacity: 0;
+                            cursor: pointer;
+                        }
+                    }
                 }
             }
 
@@ -189,6 +318,8 @@ section.profil{
 
         }
     }
+
+
 }
 
 
